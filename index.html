@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Load Reduction Plan Egypt</title>
+    <meta
+      property="og:description"
+      content="The Egypt Load Reduction Map is an open-source app providing real-time updates on Egypt's electrical load reduction plan across 24 governorates. It includes interactive maps, alerts for emergencies, and educational content, aiming to enhance public understanding and preparedness. "
+    />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/maplibre-gl@3.2.1/dist/maplibre-gl.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="static/css/styles.css" />
+    <script src="https://unpkg.com/maplibre-gl@3.2.1/dist/maplibre-gl.js"></script>
+    <script src="https://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div class="map-overlay top">
+      <div class="map-overlay-inner">
+        <h2>Load Reduction Plan Egypt</h2>
+        <label id="hour"></label>
+        <input id="slider" type="range" min="0" max="24" step="1" value="0" />
+      </div>
+      <div class="map-overlay-inner">
+        <div id="legend" class="legend">
+          <div class="bar"></div>
+          <div>Time (h)</div>
+        </div>
+      </div>
+      <div class="location-button-container">
+        <button id="getLocation"><i class="fas fa-location-arrow"></i></button>
+      </div>
+    </div>
+  </body>
+  <script src="static/js/main.js"></script>
+  <script src="static/js/getLocation.js"></script>
+</html>
