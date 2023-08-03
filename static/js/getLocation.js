@@ -23,6 +23,12 @@ document.getElementById('getLocation').addEventListener('click', function () {
         })
             .setLngLat([longitude, latitude])
             .addTo(map); // Assuming 'map' is your maplibregl map instance
+
+        // Fly to the user's location
+        map.flyTo({
+            center: [longitude, latitude],
+            zoom: 15 // Adjust zoom level as needed
+        });
     }, function (error) {
         // Handle errors and provide user feedback
         switch (error.code) {
