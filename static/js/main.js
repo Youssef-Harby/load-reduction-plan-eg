@@ -24,7 +24,7 @@ function filterBy(hour) {
 }
 
 map.on("load", () => {
-    d3.json("../data/demo-cairo-small.geojson", (err, data) => {
+    d3.json("data/demo-cairo-small.geojson", (err, data) => {
         if (err) throw err;
         data.features = data.features.map((d) => {
             const date_time_from = new Date(d.properties.disc_from);
