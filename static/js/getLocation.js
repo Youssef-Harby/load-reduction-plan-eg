@@ -29,6 +29,30 @@ document.getElementById('getLocation').addEventListener('click', function () {
             center: [longitude, latitude],
             zoom: 15 // Adjust zoom level as needed
         });
+
+        // Turf 
+        const userLocation = turf.point([longitude, latitude]);
+        // Access the GeoJSON data from the global variable
+        const geojsonData = window.geojsonData;
+
+        let intersectingFeature = null;
+        geojsonData.features.forEach(feature => {
+            if (turf.booleanPointInPolygon(userLocation, feature)) {
+                intersectingFeature = feature;
+            }
+        });
+
+        // Create a popup with the intersecting polygon's content
+        if (intersectingFeature) {
+            const popupContent = JSON.stringify(intersectingFeature.properties, null, 2); // Format the properties as JSON
+
+            new maplibregl.Popup()
+                .setLngLat([longitude, latitude])
+                .setHTML(`<pre>${popupContent}</pre>`) // Display the content in a <pre> tag
+                .addTo(map); // Assuming 'map' is your maplibregl.Map instance
+        }
+
+
     }, function (error) {
         // Handle errors and provide user feedback
         switch (error.code) {

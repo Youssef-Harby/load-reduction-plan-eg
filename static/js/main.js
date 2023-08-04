@@ -34,6 +34,9 @@ map.on("load", () => {
             return d;
         });
 
+        // Attach the GeoJSON data to a global variable
+        window.geojsonData = data;
+
         map.addSource("demo-cairo-small", {
             type: "geojson",
             data,
